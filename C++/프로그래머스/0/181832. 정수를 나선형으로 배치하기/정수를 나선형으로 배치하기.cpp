@@ -15,31 +15,16 @@ vector<vector<int>> solution(int n) {
 			num++;
 		}
 		else {
-			if (lap & 1) {
+			if (lap == 1) {
 				
-				if (y > 0 && answer[x][y - 1] == 0) {
-					y--;
-
-				}
-				else if (x > 0 && answer[x - 1][y] == 0) {
-					x--;
-				}
-				else {
-					lap--;
-				}
+				if (y > 0 && answer[x][y - 1] == 0) y--;
+				else if (x > 0 && answer[x - 1][y] == 0) x--;
+				else lap--;
 			}
 			else {
-				if (y < n - 1 && answer[x][y + 1] == 0) {
-					y++;
-
-				}
-				else if (x < n - 1 && answer[x + 1][y] == 0) {
-					x++;
-
-				}
-				else {
-					lap++;
-				}
+				if (y < n - 1 && answer[x][y + 1] == 0) y++;
+				else if (x < n - 1 && answer[x + 1][y] == 0) x++;
+				else lap++;
 			}
 		}
 	}
