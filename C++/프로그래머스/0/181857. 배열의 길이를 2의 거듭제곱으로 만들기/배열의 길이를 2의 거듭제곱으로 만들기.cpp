@@ -12,7 +12,8 @@ vector<int> solution(vector<int> arr) {
         else if (arr.size() == 1) break; 
         else i *= 2;
     }
-    for (int j = 0; j = (i - arr.size()); j++) {
+    int j = 0;
+    for (;j = (i - arr.size());) {
         arr.push_back(0);
     }
     
