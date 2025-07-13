@@ -4,6 +4,13 @@
 
 using namespace std;
 
+struct Compare {
+    bool operator()(const string& a, const string& b) const {
+        if (a.size() == b.size()) return a < b; 
+        return a.size() < b.size();
+    }
+};
+
 int main(int argc, char** argv)
 {
     ios_base::sync_with_stdio(false);
@@ -16,12 +23,9 @@ int main(int argc, char** argv)
 
 	for(test_case = 1; test_case <= T; ++test_case)
 	{
-        auto comp = [](const string& a, const string& b) {
-            if (a.size() == b.size()) return a < b; 
-            return a.size() < b.size();
-        };
+        
 
-   		set<string, decltype(comp)> a(comp);
+   		set<string, Compare> a;
 		int N;
         cin >> N;
         
