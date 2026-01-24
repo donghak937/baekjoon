@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+
+    long long k, n;
+    vector<long long> len; 
+
+    cin >> k >> n;
+    long long hi = 0;
+
+    for(int i = 0; i < k; i ++){
+        long long a;
+        cin >> a;
+        len.push_back(a);
+
+        if (a > hi) hi = a;
+    }
+
+    long long lo = 1;
+    long long ans = 0;
+    
+    while (lo <= hi) {
+        long long mid = (lo + hi) / 2;
+
+        long long pieces = 0;
+        for (int i = 0; i < k; i++) {
+            if (len[i] - mid < 0) continue;
+            else pieces += len[i] - mid;
+        }
+
+        if (pieces >= n) {      
+            ans = mid;
+            lo = mid + 1;
+        } 
+        else {                
+            hi = mid - 1;
+        }
+    }
+    cout << ans << "\n";
+
+}
